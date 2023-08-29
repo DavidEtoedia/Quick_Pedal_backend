@@ -20,7 +20,7 @@ export default class RegisterService{
     async execute(req: Request, res: Response, next: NextFunction): Promise<void>{
       try {
         const { email, phone, password, firstname, lastname, gender} = req.body;
-        
+        console.log(req.body)
         //check if user email exists
         const user = await this.userRepository.getUser({ email });
     

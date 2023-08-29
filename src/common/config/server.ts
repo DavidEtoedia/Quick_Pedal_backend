@@ -18,7 +18,7 @@ export default class Server {
             await connect();
             
             this.app.listen(process.env.PORT, () => {
-                console.log('Server is listening');
+                console.log('Server is listening ' + process.env.PORT);
             })
           }catch(error){
         

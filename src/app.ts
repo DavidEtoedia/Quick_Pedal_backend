@@ -34,8 +34,7 @@ app.use((req: Request , res: Response, next: NextFunction) => {
   next();
 });
 
-// Routes
-moduleRouters(app)
+
 
 export default app;
 
