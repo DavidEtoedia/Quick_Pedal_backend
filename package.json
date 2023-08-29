@@ -1,0 +1,43 @@
+{
+  "name": "logistics_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:start": "ts-node-dev ./src/index.ts",
+    "test": "jest --watchAll --no-cache"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.400.0",
+    "@jest/types": "^29.6.1",
+    "aws-sdk": "^2.1445.0",
+    "axios": "^1.5.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb-memory-server": "^8.14.0",
+    "mongoose": "^7.4.5",
+    "reflect-metadata": "^0.1.13",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "tsyringe": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/express": "^4.17.17",
+    "@types/express-fileupload": "^1.4.1",
+    "@types/jest": "^29.5.1",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^20.5.6",
+    "@types/supertest": "^2.0.12",
+    "@types/uuid": "^9.0.2"
+  }
+}
