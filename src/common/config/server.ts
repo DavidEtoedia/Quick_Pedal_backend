@@ -16,9 +16,11 @@ export default class Server {
   
             //connecting to mongodb
             await connect();
+
+            const PORT = process.env.PORT || 5000
             
-            this.app.listen(process.env.PORT, () => {
-                console.log('Server is listening ' + process.env.PORT);
+            this.app.listen(PORT, () => {
+                console.log('Server is listening ' + PORT);
             })
           }catch(error){
         

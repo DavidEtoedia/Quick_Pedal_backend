@@ -1,6 +1,5 @@
 import { Application } from 'express';
 import authRouter from '../modules/Auth/routes/customer.route';
-import { adminAuthRouter, agentAuthRouter } from '../modules/Auth/routes';
 import { Router } from "express";
 import customerAddressRouter from '../modules/Address/routes/customer.routes';
 import customerDeliveryRouter from '../modules/Delivery/route/customer.route';

@@ -6,7 +6,7 @@ jest.mock('uuid', () => ({
 }))
 
 test("generate reference", () => {
-    const generate_reference = generateReference('REP');
+    const generate_reference = generateReference();
     
-    expect(generate_reference).toBe('REP-somereference');
+    expect(generate_reference).toBe('somereference');
 });
