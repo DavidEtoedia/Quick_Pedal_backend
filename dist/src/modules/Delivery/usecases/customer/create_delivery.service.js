@@ -38,6 +38,7 @@ let CreateDeliveryService = class CreateDeliveryService {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { user, sender_location, recipient_location, recipient_phone, delivery_cost, distance } = req.body;
+                console.log(req.body);
                 const reference = (0, reference_generator_util_1.generateReference)();
                 const createDelivery = yield this.deliveryRepository.addDelivery({
                     reference,
@@ -65,7 +66,7 @@ let CreateDeliveryService = class CreateDeliveryService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }

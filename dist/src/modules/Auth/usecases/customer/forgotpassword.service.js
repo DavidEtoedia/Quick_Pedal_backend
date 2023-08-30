@@ -60,11 +60,7 @@ let ForgotpasswordService = class ForgotpasswordService {
                 });
             }
             catch (err) {
-                this.http.Response({
-                    res,
-                    status: "error",
-                    message: err.message
-                });
+                next(err);
             }
         });
     }

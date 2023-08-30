@@ -77,7 +77,7 @@ let RegisterService = class RegisterService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }

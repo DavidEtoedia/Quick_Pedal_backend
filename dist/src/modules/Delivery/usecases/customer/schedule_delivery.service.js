@@ -60,7 +60,7 @@ let ScheduleDeliveryService = class ScheduleDeliveryService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }

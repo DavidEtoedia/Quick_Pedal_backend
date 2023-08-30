@@ -20,7 +20,6 @@ const AuthMiddleware_1 = __importDefault(require("../../../common/middlewares/Au
 const transaction_repository_1 = __importDefault(require("../../../common/database/repository/transaction.repository"));
 const customerDeliveryRouter = (0, express_1.Router)();
 const controller = tsyringe_1.container.resolve(customer_delivery_controller_1.default);
-const transactionRepository = tsyringe_1.container.resolve(transaction_repository_1.default);
 customerDeliveryRouter.get('/get-deliveries', AuthMiddleware_1.default, (req, res, next) => controller.getDeliveries(req, res, next));
 customerDeliveryRouter.post('/create-delivery', AuthMiddleware_1.default, (req, res, next) => controller.createDelivery(req, res, next));
 customerDeliveryRouter.post('/schedule-delivery', AuthMiddleware_1.default, (req, res, next) => controller.scheduleDelivery(req, res, next));
@@ -29,6 +28,7 @@ customerDeliveryRouter.post("/payment/webhook", function (req, res, next) {
         // Retrieve the request's body
         const event = req.body;
         if (event.event === "charge.success") {
+            const transactionRepository = tsyringe_1.container.resolve(transaction_repository_1.default);
             yield transactionRepository.updateTransaction({ ref: event.data.reference }, {
                 status: "SUCCESS"
             });

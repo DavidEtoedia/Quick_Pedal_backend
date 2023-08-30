@@ -42,7 +42,7 @@ let GetDeliveriesService = class GetDeliveriesService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }

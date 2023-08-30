@@ -60,7 +60,7 @@ const UserSchema = new mongoose_1.Schema({
     account_status: {
         type: String,
         enum: account_status_1.AccountStatus,
-        required: true
+        default: 'ACTIVE',
     },
     otp_reference: {
         type: String

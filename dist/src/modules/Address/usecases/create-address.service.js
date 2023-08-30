@@ -46,7 +46,7 @@ let CreateAddressService = class CreateAddressService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }

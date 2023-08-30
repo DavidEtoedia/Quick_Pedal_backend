@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
-const SECRET_KEY = process.env.SECRET || "";
 function userAuth(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -22,6 +21,7 @@ function userAuth(req, res, next) {
                     message: 'Not authorized to take this action'
                 });
             }
+            const SECRET_KEY = process.env.SECRET || "";
             const accesstoken = authHeader && authHeader.split(' ')[1];
             const verify = yield (0, utils_1.verifyToken)(accesstoken, `${SECRET_KEY}`);
             console.log(verify);
@@ -41,7 +41,6 @@ function userAuth(req, res, next) {
                 status: "error",
                 message: err.message
             });
-            next();
         }
     });
 }

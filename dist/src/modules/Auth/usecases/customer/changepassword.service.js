@@ -61,7 +61,7 @@ let ChangepasswordService = class ChangepasswordService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }

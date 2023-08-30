@@ -13,11 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AGENT_BASE_URL = exports.ADMIN_BASE_URL = exports.BASE_URL = exports.router = void 0;
-const customer_route_1 = __importDefault(require("../modules/Auth/routes/customer.route"));
 const express_1 = require("express");
 const customer_routes_1 = __importDefault(require("../modules/Address/routes/customer.routes"));
-const customer_route_2 = __importDefault(require("../modules/Delivery/route/customer.route"));
+const customer_route_1 = __importDefault(require("../modules/Delivery/route/customer.route"));
 const cutomer_routes_1 = __importDefault(require("../modules/User/routes/cutomer.routes"));
+const customer_route_2 = __importDefault(require("../modules/Auth/routes/customer.route"));
 exports.router = (0, express_1.Router)({});
 exports.router.get('/', (_req, res, _next) => __awaiter(void 0, void 0, void 0, function* () {
     let healthcheck = {
@@ -40,8 +40,8 @@ exports.AGENT_BASE_URL = `${exports.BASE_URL}/agent`;
 function moduleRouters(app) {
     app.use('/health_check', exports.router);
     /** CUSTOMER ROUTES */
-    app.use(`${exports.BASE_URL}/auth`, customer_route_1.default);
-    app.use(`${exports.BASE_URL}/delivery`, customer_route_2.default);
+    app.use(`${exports.BASE_URL}/auth`, customer_route_2.default);
+    app.use(`${exports.BASE_URL}/delivery`, customer_route_1.default);
     app.use(`${exports.BASE_URL}/address`, customer_routes_1.default);
     app.use(`${exports.BASE_URL}/user`, cutomer_routes_1.default);
     //   /** ADMIN ROUTES */

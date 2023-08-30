@@ -71,7 +71,7 @@ let LoginService = class LoginService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }
