@@ -60,7 +60,7 @@ export default class LoginService implements IService<Request, Response, NextFun
                 data: responseData
             })
         } catch(err: any){
-            next();
+            next(err);
         }
     }
 }

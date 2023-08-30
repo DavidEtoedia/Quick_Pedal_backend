@@ -20,7 +20,7 @@ export default class CreateDeliveryService implements IService<Request, Response
         try {
 
             const { user, sender_location, recipient_location, recipient_phone, delivery_cost, distance } = req.body;
-
+            console.log(req.body)
             const reference = generateReference()
 
             const createDelivery = await this.deliveryRepository.addDelivery({
@@ -51,7 +51,7 @@ export default class CreateDeliveryService implements IService<Request, Response
                 data: paymentLink
             });
         }catch(err: any){
-            next()
+            next(err)
         }
     }
 }

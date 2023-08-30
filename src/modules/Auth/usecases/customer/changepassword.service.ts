@@ -57,7 +57,7 @@ export default class ChangepasswordService implements IService<Request, Response
         message: "Password successfully updated"
       })
     } catch(err: any) {
-      next()
+      next(err)
     }
   }
 }

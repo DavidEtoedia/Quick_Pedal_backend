@@ -52,11 +52,7 @@ export default class ForgotpasswordService implements IService<Request, Response
         data: otp
       });
     } catch(err: any) {
-      this.http.Response({
-        res,
-        status: "error",
-        message: err.message
-      });
+      next(err)
     }
   }
 }

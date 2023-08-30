@@ -2,9 +2,10 @@
   "name": "logistics_backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
-    "dev:start": "nodemon ./src/index.ts",
+    "dev:start": "nodemon src/index.ts",
+    "dev:run": "node src/index.ts",
     "build": "tsc",
     "test": "jest --watchAll --no-cache"
   },
@@ -23,14 +24,12 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb-memory-server": "^8.14.0",
     "mongoose": "^7.4.5",
-    "nodemon": "^3.0.1",
     "reflect-metadata": "^0.1.13",
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
-    "tsyringe": "^4.7.0",
-    "typescript": "^5.2.2"
+    "tsyringe": "^4.7.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -41,6 +40,8 @@
     "@types/mongoose": "^5.11.97",
     "@types/node": "^20.5.6",
     "@types/supertest": "^2.0.12",
-    "@types/uuid": "^9.0.2"
+    "@types/uuid": "^9.0.2",
+    "typescript": "^5.2.2",
+    "nodemon": "^3.0.1"
   }
 }

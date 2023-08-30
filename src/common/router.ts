@@ -4,6 +4,7 @@ import { Router } from "express";
 import customerAddressRouter from '../modules/Address/routes/customer.routes';
 import customerDeliveryRouter from '../modules/Delivery/route/customer.route';
 import customerUserRouter from '../modules/User/routes/cutomer.routes';
+import customerAuthRouter from '../modules/Auth/routes/customer.route';
 
 
 export const router = Router({});
@@ -32,7 +33,7 @@ export default function moduleRouters(app: Application): void {
   app.use('/health_check', router)
 
   /** CUSTOMER ROUTES */
-  app.use(`${BASE_URL}/auth`, authRouter);
+  app.use(`${BASE_URL}/auth`, customerAuthRouter);
   app.use(`${BASE_URL}/delivery`, customerDeliveryRouter);
   app.use(`${BASE_URL}/address`, customerAddressRouter);
   app.use(`${BASE_URL}/user`, customerUserRouter);

@@ -24,7 +24,7 @@ export default class GetDeliveriesService implements IService<Request, Response,
                 data: deliveries
             });
         }catch(err: any){
-            next()
+            next(err)
         }
     }
 }

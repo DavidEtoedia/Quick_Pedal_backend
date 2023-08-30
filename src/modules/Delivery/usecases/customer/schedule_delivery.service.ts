@@ -45,7 +45,7 @@ export default class ScheduleDeliveryService implements IService<Request, Respon
                 data: paymentLink
             });
         }catch(err: any){
-            next()
+            next(err)
         }
     }
 }

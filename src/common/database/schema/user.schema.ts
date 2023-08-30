@@ -38,7 +38,7 @@ const UserSchema: Schema = new Schema<User>({
     account_status: {
         type: String,
         enum: AccountStatus,
-        required: true
+        default: 'ACTIVE',
     },
     otp_reference: {
         type: String

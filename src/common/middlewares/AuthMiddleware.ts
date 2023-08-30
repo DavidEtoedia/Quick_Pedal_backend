@@ -2,7 +2,7 @@ import { NextFunction } from "express";
 import { Response, Request } from "express";
 import { verifyToken } from "../utils";
 
-const SECRET_KEY = process.env.SECRET || "";
+
 
 export default async function userAuth(req: Request, res: Response, next: NextFunction) {
     try {
@@ -14,7 +14,7 @@ export default async function userAuth(req: Request, res: Response, next: NextFu
           message: 'Not authorized to take this action'
           })
       }
-
+      const SECRET_KEY = process.env.SECRET || "";
       const accesstoken = authHeader && authHeader.split(' ')[1];
       const verify = await verifyToken(accesstoken, `${SECRET_KEY}`);
       console.log(verify)
@@ -33,7 +33,5 @@ export default async function userAuth(req: Request, res: Response, next: NextFu
             status: "error",
             message: err.message
         })
-
-        next()
     }
 }

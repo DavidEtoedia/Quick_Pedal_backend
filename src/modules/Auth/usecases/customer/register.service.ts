@@ -66,7 +66,7 @@ export default class RegisterService{
           data: createUserAccount
         })
       } catch(err: any){
-        next()
+        next(err)
       }
     }
 }

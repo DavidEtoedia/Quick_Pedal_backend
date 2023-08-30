@@ -30,7 +30,7 @@ export default class CreateAddressService implements IService<Request, Response,
                 data: userData
             });
         }catch(err: any){
-            next()
+            next(err)
         }
     }
 }
