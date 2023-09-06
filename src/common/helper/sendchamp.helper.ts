@@ -20,7 +20,6 @@ export default class SendchampHelper {
         return await axios.post('https://api.sendchamp.com/api/v1/email/send', {
             subject: args.subject,
             to: [{email: args.toEmail, name: args.toName}],
-            from: {email: 'logistics@gmail.com', name: 'logistics'},
             message_body: {type: 'text/html', value: args.message}
         }, {
             headers: {
