@@ -1,7 +1,7 @@
 import { injectable } from "tsyringe";
 import { NextFunction, Request, Response } from 'express';
 import { User } from "../../../../common/database/models/user.model";
-import { Http, hash } from "../../../../common/utils";
+import { Http, generateToken, hash } from "../../../../common/utils";
 import { ErrorService } from "../../../../common/services";
 import UserRepository from "../../../../common/database/repository/user.repository";
 import { Role } from "../../../../common/constants/role";
@@ -58,12 +58,25 @@ export default class RegisterService{
         };
     
         const createUserAccount = await this.userRepository.addUser(userdata);
-        console.log('login: ' + createUserAccount)
+
+        const userdetails = {
+          username: createUserAccount.firstname,
+          id: createUserAccount._id,
+          email: createUserAccount.email
+        }
+
+        const generatedToken = await generateToken(userdetails, `${process.env.SECRET}`);
+            
+        const responseData = {
+            token: generatedToken,
+            user: userdetails
+        }
+       
         this.httpService.Response({
           res,
           status: "success",
           message: "Account successfully created",
-          data: createUserAccount
+          data: responseData
         })
       } catch(err: any){
         next(err)

@@ -4,6 +4,7 @@ import { Http, compareHash, generateToken } from "../../../../common/utils";
 import { ErrorService } from "../../../../common/services";
 import UserRepository from "../../../../common/database/repository/user.repository";
 import { IService } from "../../../../common/interfaces";
+import { NotFoundError } from "../../../../common/errors/notfound.error";
 
 
 @injectable()
@@ -22,17 +23,14 @@ export default class LoginService implements IService<Request, Response, NextFun
             const user = await this.userRepository.getUser({ email: email.toLowerCase() });
 
             if (!user) {
-                this.errorService.emailNotFound();
+                throw new NotFoundError('User email not found');
             }
 
             // check password 
             const checkpassword = await compareHash(password, user.password)
         
             if(!checkpassword){
-                this.errorService.wrongPassword({
-                    providedPassword: password,
-                    retrievedPassword: user.password
-                })
+                throw new NotFoundError('User password is wrong');
             }
 
             const userdetails = {
