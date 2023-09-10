@@ -22,9 +22,11 @@ app.use((req: Request , res: Response, next: NextFunction) => {
   );
   next();
 });
-app.use(errorMiddleware);
+
 // Routes
 moduleRouters(app)
+
+app.use(errorMiddleware);
 
 export default app;
 

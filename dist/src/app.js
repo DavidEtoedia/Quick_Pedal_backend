@@ -18,8 +18,8 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
     next();
 });
-app.use(error_middleware_1.errorMiddleware);
 // Routes
 (0, router_1.default)(app);
+app.use(error_middleware_1.errorMiddleware);
 exports.default = app;
 //# sourceMappingURL=app.js.map
