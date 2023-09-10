@@ -65,7 +65,7 @@ let RegisterService = class RegisterService {
                     email: email.toLowerCase(),
                     phone,
                     role: role_1.Role.CUSTOMER,
-                    gender,
+                    gender: gender.toUpperCase(),
                 };
                 const createUserAccount = yield this.userRepository.addUser(userdata);
                 const userdetails = {

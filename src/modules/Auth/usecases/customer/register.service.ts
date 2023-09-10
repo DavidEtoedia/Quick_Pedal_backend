@@ -54,7 +54,7 @@ export default class RegisterService{
           email: email.toLowerCase(),
           phone,
           role: Role.CUSTOMER,
-          gender,
+          gender: gender.toUpperCase(),
         };
     
         const createUserAccount = await this.userRepository.addUser(userdata);
