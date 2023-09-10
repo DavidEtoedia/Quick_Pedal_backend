@@ -9,7 +9,6 @@ const app: Application = express();
 
 // Middlewares
 app.use(express.json());
-app.use(errorMiddleware);
 app.use(express.urlencoded({extended: true}));
 app.use((req: Request , res: Response, next: NextFunction) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -23,7 +22,7 @@ app.use((req: Request , res: Response, next: NextFunction) => {
   );
   next();
 });
-
+app.use(errorMiddleware);
 // Routes
 moduleRouters(app)
 

@@ -68,12 +68,21 @@ let RegisterService = class RegisterService {
                     gender,
                 };
                 const createUserAccount = yield this.userRepository.addUser(userdata);
-                console.log('login: ' + createUserAccount);
+                const userdetails = {
+                    username: createUserAccount.firstname,
+                    id: createUserAccount._id,
+                    email: createUserAccount.email
+                };
+                const generatedToken = yield (0, utils_1.generateToken)(userdetails, `${process.env.SECRET}`);
+                const responseData = {
+                    token: generatedToken,
+                    user: userdetails
+                };
                 this.httpService.Response({
                     res,
                     status: "success",
                     message: "Account successfully created",
-                    data: createUserAccount
+                    data: responseData
                 });
             }
             catch (err) {

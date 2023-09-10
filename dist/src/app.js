@@ -11,7 +11,6 @@ const error_middleware_1 = require("./common/middlewares/error.middleware");
 const app = (0, express_1.default)();
 // Middlewares
 app.use(express_1.default.json());
-app.use(error_middleware_1.errorMiddleware);
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -19,6 +18,7 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
     next();
 });
+app.use(error_middleware_1.errorMiddleware);
 // Routes
 (0, router_1.default)(app);
 exports.default = app;
