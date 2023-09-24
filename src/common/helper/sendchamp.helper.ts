@@ -29,4 +29,27 @@ export default class SendchampHelper {
             }
         })
     }
+
+    async sendOTP(phone_number: string, description: string) {
+        return await axios.post('https://api.sendchamp.com/api/v1/verification/create', {
+            channel: 'sms',
+            sender: 'SAlert',
+            token_type: 'numeric',
+            token_length: 4,
+            expiration_time: 10,
+            customer_mobile_number: phone_number,
+            meta_data: {description: description ? description : ''},
+            in_app_token: false
+        }, {
+            headers: {
+                'Authorization': `Bearer ${SENDCHAMP_API_KEY}`,
+                'accept': 'application/json',
+                'content-type': 'application/json'
+            }
+        })
+    }
+
+    async verifyOTP(){
+
+    }
 }

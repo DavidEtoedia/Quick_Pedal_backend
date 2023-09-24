@@ -22,7 +22,7 @@ export default class ChangePasswordService implements IService<Request, Response
 
             const hashedPassword = await hash(password);
 
-            await this.userRepository.updateUser({_id: req.params.id}, {password: hashedPassword});
+            await this.userRepository.updateUser({_id: user.id}, {password: hashedPassword});
 
             this.httpHttp.Response({  
                 res,
