@@ -25,7 +25,7 @@ export default class GetUserService implements IService<Request, Response, NextF
                 data: userData
             });
         }catch(err: any){
-            next()
+            next(err)
         }
     }
 }

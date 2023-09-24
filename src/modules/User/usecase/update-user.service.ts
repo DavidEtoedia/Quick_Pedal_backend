@@ -28,7 +28,7 @@ export default class UpdateUserService implements IService<Request, Response, Ne
                 data: userData
             });
         }catch(err: any){
-            next()
+            next(err)
         }
     }
 }

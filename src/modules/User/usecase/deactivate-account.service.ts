@@ -28,7 +28,7 @@ export default class DeactivateAccountService implements IService<Request, Respo
                 data: userData
             });
         }catch(err: any){
-            next()
+            next(err)
         }
     }
 }
