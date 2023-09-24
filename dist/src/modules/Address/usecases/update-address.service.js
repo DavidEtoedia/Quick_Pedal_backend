@@ -46,7 +46,7 @@ let UpdateAddressService = class UpdateAddressService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }

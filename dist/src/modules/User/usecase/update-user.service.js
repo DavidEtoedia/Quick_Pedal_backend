@@ -45,7 +45,7 @@ let UpdateUserService = class UpdateUserService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }

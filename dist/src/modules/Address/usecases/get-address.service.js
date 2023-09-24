@@ -42,7 +42,7 @@ let GetAddressService = class GetAddressService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }

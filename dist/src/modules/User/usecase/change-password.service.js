@@ -37,7 +37,7 @@ let ChangePasswordService = class ChangePasswordService {
                     throw new Error("You cant retain old password");
                 }
                 const hashedPassword = yield (0, utils_1.hash)(password);
-                yield this.userRepository.updateUser({ _id: req.params.id }, { password: hashedPassword });
+                yield this.userRepository.updateUser({ _id: user.id }, { password: hashedPassword });
                 this.httpHttp.Response({
                     res,
                     status: "success",
@@ -45,7 +45,7 @@ let ChangePasswordService = class ChangePasswordService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }

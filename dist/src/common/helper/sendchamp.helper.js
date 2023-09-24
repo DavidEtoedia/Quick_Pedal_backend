@@ -42,6 +42,30 @@ let SendchampHelper = class SendchampHelper {
             });
         });
     }
+    sendOTP(phone_number, description) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield axios_1.default.post('https://api.sendchamp.com/api/v1/verification/create', {
+                channel: 'sms',
+                sender: 'SAlert',
+                token_type: 'numeric',
+                token_length: 4,
+                expiration_time: 10,
+                customer_mobile_number: phone_number,
+                meta_data: { description: description ? description : '' },
+                in_app_token: false
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${SENDCHAMP_API_KEY}`,
+                    'accept': 'application/json',
+                    'content-type': 'application/json'
+                }
+            });
+        });
+    }
+    verifyOTP() {
+        return __awaiter(this, void 0, void 0, function* () {
+        });
+    }
 };
 SendchampHelper = __decorate([
     (0, tsyringe_1.injectable)(),

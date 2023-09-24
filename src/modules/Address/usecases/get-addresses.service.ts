@@ -26,7 +26,7 @@ export default class GetAddressesService implements IService<Request, Response, 
                 data: userData
             });
         }catch(err: any){
-            next()
+            next(err)
         }
     }
 }

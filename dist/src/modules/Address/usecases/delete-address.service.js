@@ -42,7 +42,7 @@ let DeleteAddressService = class DeleteAddressService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }

@@ -31,7 +31,7 @@ export default class UpdateAddressService implements IService<Request, Response,
                 data: userData
             });
         }catch(err: any){
-            next()
+            next(err)
         }
     }
 }

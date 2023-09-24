@@ -42,7 +42,7 @@ let GetUserService = class GetUserService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }

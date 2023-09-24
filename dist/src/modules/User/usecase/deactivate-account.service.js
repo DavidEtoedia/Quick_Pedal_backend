@@ -45,7 +45,7 @@ let DeactivateAccountService = class DeactivateAccountService {
                 });
             }
             catch (err) {
-                next();
+                next(err);
             }
         });
     }
