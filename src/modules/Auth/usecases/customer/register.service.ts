@@ -5,6 +5,7 @@ import { Http, generateToken, hash } from "../../../../common/utils";
 import { ErrorService } from "../../../../common/services";
 import UserRepository from "../../../../common/database/repository/user.repository";
 import { Role } from "../../../../common/constants/role";
+import { NotFoundError } from "../../../../common/errors/notfound.error";
 
 
 @injectable()
@@ -20,32 +21,26 @@ export default class RegisterService{
     async execute(req: Request, res: Response, next: NextFunction): Promise<void>{
       try {
         const { email, phone, password, firstname, lastname, gender} = req.body;
-        console.log(req.body)
+     
         //check if user email exists
         const user = await this.userRepository.getUser({ email });
-    
+       
         //if user email exists
         if (user) {
-          await this.errorService.emailAlreadyExist({
-            providedEmail: email,
-            matchedUser: user
-         })
+          throw new NotFoundError('email already exists');
         }
     
         //check if user phone exists
         const userphone = await this.userRepository.getUser({ phone });
-    
+        
         //if user phone exists
-        if (userphone !== null) {
-          await this.errorService.phoneAlreadyExist({
-            providedPhone: phone,
-            matchedPhone: userphone
-          })
+        if (userphone) {
+          throw new NotFoundError('phone number already exists');
         }
     
         //encrypt password
         const encryptpassword = await hash(password);
-    
+       
         //register user
         const userdata: User = {
           firstname: firstname.toLowerCase(),
@@ -58,7 +53,7 @@ export default class RegisterService{
         };
     
         const createUserAccount = await this.userRepository.addUser(userdata);
-
+        
         const userdetails = {
           username: createUserAccount.firstname,
           id: createUserAccount._id,
@@ -66,7 +61,7 @@ export default class RegisterService{
         }
 
         const generatedToken = await generateToken(userdetails, `${process.env.SECRET}`);
-            
+        
         const responseData = {
             token: generatedToken,
             user: userdetails
