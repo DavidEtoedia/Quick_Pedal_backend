@@ -26,6 +26,7 @@ const utils_1 = require("../../../../common/utils");
 const services_1 = require("../../../../common/services");
 const user_repository_1 = __importDefault(require("../../../../common/database/repository/user.repository"));
 const role_1 = require("../../../../common/constants/role");
+const notfound_error_1 = require("../../../../common/errors/notfound.error");
 let RegisterService = class RegisterService {
     constructor(userRepository, errorService, httpService) {
         this.userRepository = userRepository;
@@ -36,24 +37,17 @@ let RegisterService = class RegisterService {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { email, phone, password, firstname, lastname, gender } = req.body;
-                console.log(req.body);
                 //check if user email exists
                 const user = yield this.userRepository.getUser({ email });
                 //if user email exists
                 if (user) {
-                    yield this.errorService.emailAlreadyExist({
-                        providedEmail: email,
-                        matchedUser: user
-                    });
+                    throw new notfound_error_1.NotFoundError('email already exists');
                 }
                 //check if user phone exists
                 const userphone = yield this.userRepository.getUser({ phone });
                 //if user phone exists
-                if (userphone !== null) {
-                    yield this.errorService.phoneAlreadyExist({
-                        providedPhone: phone,
-                        matchedPhone: userphone
-                    });
+                if (userphone) {
+                    throw new notfound_error_1.NotFoundError('phone number already exists');
                 }
                 //encrypt password
                 const encryptpassword = yield (0, utils_1.hash)(password);
