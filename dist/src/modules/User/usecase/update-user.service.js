@@ -32,10 +32,12 @@ let UpdateUserService = class UpdateUserService {
     execute(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { user, email, phone } = req.body;
+                const { user, email, firstname, lastname, phone } = req.body;
                 const userData = yield this.userRepository.updateUser({ _id: user.id }, {
                     email,
-                    phone
+                    phone,
+                    firstname,
+                    lastname
                 });
                 this.httpHttp.Response({
                     res,
