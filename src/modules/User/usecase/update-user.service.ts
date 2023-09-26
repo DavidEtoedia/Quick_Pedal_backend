@@ -14,11 +14,13 @@ export default class UpdateUserService implements IService<Request, Response, Ne
     async execute(req: Request, res: Response, next: NextFunction){
         try {
 
-            const { user, email, phone } = req.body;
+            const { user, email, firstname, lastname, phone } = req.body;
 
             const userData = await this.userRepository.updateUser({_id: user.id}, {
                 email,
-                phone
+                phone,
+                firstname,
+                lastname
             })
 
             this.httpHttp.Response({  
